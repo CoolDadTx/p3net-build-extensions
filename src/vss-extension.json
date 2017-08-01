@@ -1,0 +1,58 @@
+{
+    "manifestVersion": 1,
+    "id": "p3net-buildextensions",
+    "version": "1.0.8",
+    "name": "P3Net Build Extensions",
+    "publisher": "p3net",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }	
+    ],
+	"scopes": [
+		"vso.build",
+		"vso.build_execute"
+	],
+	"description": "Build extensions from P3 NET",
+	"categories": [
+		"Build and release"
+	],
+	"icons": {
+		"default": "extension-icon.png"
+	},
+	"content": {
+		"details": {
+			"path": "overview.md"
+		}
+	},
+	"files": [
+		{
+			"path": "ShowVariables"			
+		},
+		{
+			"path": "VersionAssemblies"
+		}
+	],
+	"contributions": [
+		{
+			"id": "p3net-showvariables-task",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "ShowVariables"
+			}
+		},
+		{
+			"id": "p3net-versionassemblies-task",
+			"type": "ms.vss-distributed-task.task",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+			],
+			"properties": {
+				"name": "VersionAssemblies"
+			}
+		}
+	]
+}
