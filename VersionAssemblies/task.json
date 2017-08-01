@@ -1,0 +1,112 @@
+{
+  "id": "c4e7efd0-dc14-11e6-915a-e9fd129e2c5b",
+  "name": "VersionAssemblies",
+  "friendlyName": "Version Assemblies",
+  "description": "Versions the assemblies in a build.",
+  "author": "P3Net",
+  "helpMarkDown": "Settings under Product should be set for each product. Advanced contains options that are generally either set for all company products or left at their defaults.",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "8"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "Version Assemblies",
+  "groups": [
+  	{
+		"name": "product",
+		"displayName": "Product",
+		"isExpanded": true
+	},
+	{
+		"name": "advanced",
+		"displayName": "Advanced",
+		"isExpanded": false
+	}
+  ],
+  "inputs": [
+	{
+      "name": "product",
+      "type": "string",
+      "label": "Product",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The product name.",
+	  "groupName" : "product"
+    },
+    {
+      "name": "major",
+      "type": "string",
+      "label": "Major Version",
+      "defaultValue": "1",
+      "required": true,
+      "helpMarkDown": "The major version number. Update this value for each major release.",
+	  "groupName" : "product"
+    },
+    {
+      "name": "minor",
+      "type": "string",
+      "label": "Minor Version",
+      "defaultValue": "0",
+      "required": true,
+      "helpMarkDown": "The minor version number. Update this value for any new release. Reset to 0 when the major version is changed.",
+	  "groupName" : "product"
+    },
+    {	
+      "name": "build",
+      "type": "string",
+      "label": "Build Version",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The build version number. This is managed by TFS but can be overridden if needed.",
+	  "groupName" : "advanced"
+    },
+	{	
+      "name": "assemblyInfoFilePattern",
+      "type": "string",
+      "label": "Assembly Info File Pattern",
+      "defaultValue": "AssemblyInfo.*",
+      "required": true,
+      "helpMarkDown": "The file pattern for files containing the assembly information to be updated.",
+	  "groupName" : "advanced"
+    },	
+	{
+      "name": "configuration",
+      "type": "string",
+      "label": "Configuration",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The configuration for this release.",
+	  "groupName" : "advanced"
+    },
+	{	
+      "name": "company",
+      "type": "string",
+      "label": "Company",
+      "defaultValue": "P3Net",
+      "required": true,
+      "helpMarkDown": "The company name.",
+	  "groupName" : "advanced"
+    },
+	{	
+      "name": "trademark",
+      "type": "string",
+      "label": "Trademark",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The trademark notice.",
+	  "groupName" : "advanced"
+    }
+  ],
+  "execution": {
+	"PowerShell3": {
+		"target": "versionAssemblies.ps1"
+	}
+  }
+}
